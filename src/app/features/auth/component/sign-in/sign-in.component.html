@@ -1,0 +1,48 @@
+<main>
+  <app-breadcrumb></app-breadcrumb>
+
+  <section>
+    <div class="container">
+      <h3>Sign In</h3>
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" #email required />
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" #password required />
+        </div>
+
+        <div class="form-group">
+          <input type="button" class="btn btn-primary" value="Log in"
+            (click)="authService.SignIn(email.value, password.value)" />
+        </div>
+
+        <div class="form-group">
+          <span class="or"><span class="orInner">Or</span></span>
+        </div>
+      </form>
+
+      <button type="button" class="btn btn-google btn-block  btn-outline" (click)="authService.GoogleAuth()">
+        <img src="https://img.icons8.com/color/16/000000/google-logo.png">
+        Sign in with Google
+      </button>
+
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Forgot Password?</span>
+      </div>
+
+      <div class="redirectToLogin">
+        <span>Don't have an account?<span class="redirect" routerLink="/register">
+            Sign Up</span></span>
+      </div>
+    </div>
+    <div class="my-3">
+      <div class="loading">Loading</div>
+      <div class="error-message"></div>
+      <div class="sent-message">Your message has been sent. Thank you!</div>
+    </div>
+  </section>
+</main>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>

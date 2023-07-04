@@ -1,0 +1,205 @@
+@import "../../../../../styles/styles.less";
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+    h2 {
+      font-size: 48px;
+      font-weight: 700;
+      font-family: @font-secondary;
+      margin: 30px 0;
+  
+      @media (min-width: 991px) {
+        max-width: 65%;
+        margin: 0 0 80px 0;
+      }
+    }
+  
+    .our-story {
+      padding: 40px;
+      background-color: #f5f6f7;
+  
+      @media (min-width: 991px) {
+        padding-right: 35%;
+      }
+  
+      h4 {
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #838893;
+      }
+  
+      h3 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: @color-secondary;
+      }
+  
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 15px;
+  
+      li {
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+  
+        i {
+          font-size: 20px;
+          margin-right: 4px;
+          color: @color-primary;
+        }
+      }
+    }
+  
+    .watch-video {
+      i {
+        font-size: 32px;
+        transition: 0.3s;
+        color: @color-primary;
+      }
+  
+      a {
+        font-weight: 600;
+        color: @color-secondary;
+        margin-left: 8px;
+        transition: 0.3s;
+  
+        &:hover {
+          color: @color-primary;
+        }
+      }
+    }
+  
+    .about-img {
+      min-height: 600px;
+      background-size: cover;
+      background-position: center;
+  
+      @media (min-width: 992px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  
+
+  /*--------------------------------------------------------------
+# Stats Counter Section
+--------------------------------------------------------------*/
+.stats-counter {
+    .stats-item {
+      background: #fff;
+      box-shadow: 0px 0 30px rgba(82, 86, 94, 0.05);
+      padding: 30px;
+  
+      i {
+        font-size: 42px;
+        line-height: 0;
+        margin-right: 20px;
+        color: @color-primary;
+      }
+  
+      span {
+        font-size: 36px;
+        display: block;
+        font-weight: 600;
+        color: @color-secondary;
+      }
+  
+      p {
+        padding: 0;
+        margin: 0;
+        font-family: @font-primary;
+        font-size: 14px;
+      }
+    }
+  }
+  
+
+  /*--------------------------------------------------------------
+# Alt Services Section
+--------------------------------------------------------------*/
+.alt-services {
+    .img-bg {
+      background-size: cover;
+      background-position: center center;
+      min-height: 400px;
+    }
+  
+    h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: @color-secondary;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      position: relative;
+  
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: @color-primary;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  
+    .icon-box {
+      margin-top: 50px;
+  
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: @color-primary;
+        margin-right: 25px;
+        font-size: 28px;
+        width: 56px;
+        height: 56px;
+        border-radius: 4px;
+        line-height: 0;
+        box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.08);
+        background-color: #fff;
+        transition: 0.3s;
+  
+        &:hover {
+          background-color: @color-primary;
+          color: #fff;
+        }
+      }
+  
+      h4 {
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 18px;
+  
+        a {
+          color: #000;
+          transition: 0.3s;
+  
+          &:hover {
+            color: @color-primary;
+          }
+        }
+      }
+  
+      p {
+        line-height: 24px;
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
