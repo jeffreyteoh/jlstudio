@@ -42,3 +42,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
+src/app/shared/services/storage.service.ts
+.env
+src/environments/environment.local.ts
+src/environments/environment.prod.ts
+src/environments/environment.ts

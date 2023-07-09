@@ -9,30 +9,56 @@ import * as JSZip from 'jszip';
   providedIn: 'root',
 })
 export class StorageService {
+  constructor(
+    private angularFireStorage: AngularFireStorage,
+    private httpClient: HttpClient
+  ) {}
 
-  constructor(private angularFireStorage: AngularFireStorage,
-              private httpClient: HttpClient) {
-  }
-
-  public downloadZippedFiles(files: FileDownloadEntity[], zipName: string): void {
-
+  public downloadZippedFiles(
+    files: FileDownloadEntity[],
+    zipName: string
+  ): void {
     const zipFile: JSZip = new JSZip();
     let count = 0;
 
-    files.forEach(file => {
-      this.angularFireStorage.ref('/' + file.name).getDownloadURL().subscribe(url => {
-        this.httpClient.get(url, {responseType: 'blob'}).subscribe(response => {
+    files.forEach((file) => {
+      this.angularFireStorage
+        .ref('/' + file.name)
+        .getDownloadURL()
+        .subscribe((url: string) => {
+          this.httpClient
+            .get(url, { responseType: 'blob' })
+            .subscribe(
+              (
+                response:
+                  | string
+                  | Blob
+                  | ArrayBuffer
+                  | number[]
+                  | Uint8Array
+                  | NodeJS.ReadableStream
+                  | Promise<
+                      | string
+                      | Blob
+                      | ArrayBuffer
+                      | number[]
+                      | Uint8Array
+                      | NodeJS.ReadableStream
+                    >
+              ) => {
+                zipFile.file(file.fileName + file.extension, response, {
+                  binary: true,
+                });
 
-          zipFile.file(file.fileName + file.extension, response, {binary: true});
-
-          count++;
-          if (count === files.length) {
-            zipFile.generateAsync({type: 'blob'}).then(content => {
-              saveAs(content, zipName + '.zip');
-            });
-          }
+                count++;
+                if (count === files.length) {
+                  zipFile.generateAsync({ type: 'blob' }).then((content) => {
+                    saveAs(content, zipName + '.zip');
+                  });
+                }
+              }
+            );
         });
-      });
     });
   }
 }
