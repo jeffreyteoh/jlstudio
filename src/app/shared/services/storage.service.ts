@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { HttpClient } from '@angular/common/http';
 import { saveAs } from 'file-saver';
-import { FileDownloadEntity } from '../../features/dashboard/services/file-download.entity';
+import { FileDownloadEntity } from '../model/file-download.entity';
 import * as JSZip from 'jszip';
 import { map, firstValueFrom, finalize } from 'rxjs';
 import { ListResult } from '@angular/fire/compat/storage/interfaces';

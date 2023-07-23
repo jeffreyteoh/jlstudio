@@ -27,7 +27,6 @@ import { LightgalleryModule } from 'lightgallery/angular';
 
 
 import { ContactComponent } from './features/contact/component/contact/contact.component';
-import { DashboardComponent } from './features/dashboard/component/dashboard/dashboard.component';
 import { SignInComponent } from './features/auth/component/sign-in/sign-in.component';
 import { SignUpComponent } from './features/auth/component/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './features/auth/component/verify-email/verify-email.component';
@@ -45,9 +44,6 @@ import { ToastComponent } from './core/components/toast/toast.component';
 
 import { AuthService } from './shared/services/auth.service';
 import { ToastService } from './shared/services/toast.service';
-import { AdminComponent } from './features/dashboard/component/admin/admin.component';
-import { ProfileComponent } from './features/dashboard/component/profile/profile.component';
-import { SideNavComponent } from './features/dashboard/component/side-nav/side-nav.component';
 import { DropzoneComponent } from './core/components/dropzone/dropzone.component';
 
 import { DialogComponent } from './core/components/dialog/dialog.component';
@@ -59,7 +55,6 @@ import { FirestoreService } from './shared/services/firestore.service';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     ForgotPasswordComponent,
     SignInComponent,
     SignUpComponent,
@@ -74,10 +69,7 @@ import { FirestoreService } from './shared/services/firestore.service';
     ContactComponent,
     GalleryComponent,
     ToastComponent,
-    AdminComponent,
     AlbumComponent,
-    ProfileComponent,
-    SideNavComponent,
     DropzoneComponent,
     DialogComponent
   ],
