@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './features/auth/component/sign-in/sign-in.component';
 import { SignUpComponent } from './features/auth/component/sign-up/sign-up.component';
-import { DashboardComponent } from './features/dashboard/component/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './features/auth/component/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './features/auth/component/verify-email/verify-email.component';
 import { HomeComponent } from './features/home/component/home/home.component';
@@ -37,14 +36,6 @@ const routes: Routes = [
     data: { breadcrumb:  {
       label: 'Sign Up',
       url: '/signup' 
-    } },
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    data: { breadcrumb: {
-      label: 'Dashboard',
-      url: '/dashboard' 
     } },
   },
   {
