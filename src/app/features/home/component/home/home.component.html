@@ -1,32 +1,156 @@
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero">
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero">
+  <div class="info d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+          <h2 data-aos="fade-down">
+            Capture <b>your</b> moment and be the <b>superstar </b>of your own
+            movie.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="info d-flex align-items-center">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h2 data-aos="fade-down">Welcome to <br> <span>John Loong Studio</span></h2>
-            <p data-aos="fade-up">Capture Your Precious Moments in Kuala Lumpur and Ipoh</p>
-            <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Book a Session here!</a>
+  <div
+    class="carousel-item"
+    [@fadeInOnEnter]
+    [@fadeOutOnLeave]
+    style="background-image: url(assets/images/carousel1.jpg)"
+  ></div>
+</section>
+<!-- End Hero Section -->
+
+<section id="about">
+  <div class="row container">
+    <div class="col-lg-6 justify-content-center box align-middle">
+      <h1 class="text-center">I'm John Loong.</h1>
+      <br />
+      <br />
+      <h4>
+        We are here to celebrate you. Whatever you have envisioned for your
+        Elopement, Adventure Session or Vow Renewal — we are here to honour
+        that. We are here to love you and turn your love story into art.
+        Whatever feels authentic to you is authentic to us and we would be
+        beyond honoured to join you for the adventure and capture your story as
+        honestly and authentically as we can!
+      </h4>
+    </div>
+    <div class="col-lg-6 text-center box">
+      <img src="assets/images/JL.jpg" class="rounded img-fluid" />
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section-bg">
+  <div class="row container">
+    <div class="col-lg-12 justify-content-center box align-middle">
+      <h1 class="text-center">FAQ</h1>
+      <br />
+      <br />
+      <div class="accordion" id="accordionFaq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              When will our photos/video will be delivered?
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              We always send a couple of sneak peeks within the first couple of
+              days after our time together. Then for adventure sessions full
+              galleries will be delivered between 4 - 8 weeks. For Elopements
+              full galleries will be ready within 8 - 12 weeks. Our timeframes
+              are slightly higher than the average photographer as we travel a
+              lot for work and we hand edit each photo with care. Our Videos are
+              delicately pieced together. All of this is in order to tell your
+              story as honestly, authentically and artistically as possible -
+              this takes time but it’ll be worth the wait!
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Do you charge travel & accomodation?
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              Yes! Our Glencoe & Skye Adventure Session Packages include all our
+              travel & accommodation costs however for Elopements depending on
+              location an additional travel & accommodation fee will be added.
+              To give a rough idea an Elopement on the Isle of Skye would have a
+              £400 travel and accommodation fee added to cover a 2 night stay &
+              fuel. An Elopement in Ireland / Northern Ireland would have a £750
+              travel & accommodation fee added to cover the ferry, 2 nights stay
+              & fuel.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              Do you offer albums and prints?
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">Yes! We offer albums and prints.</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-
-      <div class="carousel-item active" style="background-image: url(assets/images/carousel1.jpg)"></div>
-      <div class="carousel-item" style="background-image: url(assets/images/carousel2.jpg)"></div>
-
-
-      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+<section id="contact">
+  <div class="row container text-center">
+    <div class="col-lg-12 justify-content-center box align-middle">
+      <h1 class="text-center">Let's join the crew and write your story.</h1>
+      <br />
+      <br />
+      <a routerLink="/contact">
+        <button type="button" class="btn btn-primary">
+          Create your moment now
+        </button>
       </a>
-
-      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-      </a>
-
     </div>
-
-  </section><!-- End Hero Section -->
+  </div>
+</section>

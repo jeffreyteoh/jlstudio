@@ -1,0 +1,26 @@
+@import "variables";
+
+.button-container {
+    display: flex;
+
+    button {
+        margin-right: 10px;
+    }
+}
+
+.card-columns {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 1.5rem;
+    justify-content: center;
+}
+
+nav {
+    background: $color-4;
+    user-select: none;
+
+    .nav-link {
+        color: $color-default;
+    }
+}

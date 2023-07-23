@@ -9,13 +9,13 @@ import { HomeComponent } from './features/home/component/home/home.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { ContactComponent } from './features/contact/component/contact/contact.component';
 import { GalleryComponent } from './features/gallery/components/gallery/gallery.component';
-import { AboutComponent } from './features/about/components/about/about.component';
-import { ServicesComponent } from './features/services/components/services/services.component';
+import { AlbumComponent } from './features/gallery/components/album/album.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    title: 'JLStudio - Home',
     pathMatch: 'full',
   },
   {
@@ -66,6 +66,7 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
+    title: 'Contact',
     data: { breadcrumb: {
       label: 'Contact',
       url: '/contact' 
@@ -74,26 +75,15 @@ const routes: Routes = [
   {
     path: 'gallery',
     component: GalleryComponent,
+    title: 'Gallery',
     data: { breadcrumb: {
       label: 'Gallery',
       url: '/gallery' 
-    }},
+    }}
   },
   {
-    path: 'services',
-    component: ServicesComponent,
-    data: { breadcrumb: {
-      label: 'Services',
-      url: '/services' 
-    }},
-  },
-  {
-    path: 'about',
-    component: AboutComponent,
-    data: { breadcrumb: {
-      label: 'About',
-      url: '/about' 
-    }},
+    path: 'album/:name',
+    component: AlbumComponent
   },
   { path: '**', component: PageNotFoundComponent },
 ];
@@ -102,4 +92,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule {}

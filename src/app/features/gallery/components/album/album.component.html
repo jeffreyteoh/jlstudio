@@ -1,0 +1,50 @@
+<section id="hero" class="hero">
+  <div class="info d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2 data-aos="fade-down">
+            <span>{{ album.name }}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="carousel-item active"
+    [ngStyle]="{ 'background-image': 'url(' + album.cover + ')' }"
+  ></div>
+</section>
+
+<!-- End Hero Section -->
+<nav id="navbar1" class="navbar sticky-top" aria-label>
+  <nav class="nav nav-pills " aria-label>
+    <a class="nav-link" href="#item-1">Item 1</a>
+    <a class="nav-link" href="#item-2">Item2</a>
+    <a class="nav-link" href="#item-3">Item3</a>
+  </nav>
+  <nav class="nav nav-pills " aria-label>
+    <a class="nav-link" href="#item-2"><i class="bi bi-share"></i></a>
+    <a class="nav-link" href="#item-3"><i class="bi bi-download"></i></a>
+  </nav>
+</nav>
+
+<section id="album" data-spy="scroll" data-target="#navbar" data-offset="0">
+
+  <div>
+    <h1 class="text-center">Cover</h1>
+    <div class="container-fluid">
+      <lightgallery [settings]="settings" [onBeforeSlide]="onBeforeSlide">
+          <a href="assets/images/carousel1.jpg">
+            <img alt="img1" src="assets/images/carousel1.jpg" />
+          </a>
+  
+        <a href="assets/images/carousel2.jpg">
+          <img alt="img2" src="assets/images/carousel2.jpg" />
+        </a>
+      </lightgallery>
+    </div>
+  </div>
+
+</section>
