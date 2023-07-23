@@ -1,0 +1,185 @@
+@import "bootstrap-icons/font/bootstrap-icons.scss", "variables", 'lightgallery/scss/lightgallery';
+
+::ng-deep {
+  .file-drop {
+    .ngx-file-drop__drop-zone {
+      height: 100%;
+    }
+  }
+}
+/* Fonts */
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-default;
+  color: $color-default;
+  overflow-x: hidden;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-primary;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: $color-primary;
+  border-color: $color-1;
+
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: $color-1;
+  border-color: $color-primary;
+}
+
+.btn-primary:disabled {
+  background-color: $color-primary;
+  border-color: $color-1;
+  opacity: 0.5;
+
+}
+
+.container {
+  text-align: justify;
+  width: 60%;
+  margin: auto;
+}
+
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
+section {
+  padding: 80px 0;
+  overflow: hidden;
+  background-color: $color-4;
+  user-select: none;
+}
+
+.section-bg {
+  background-color: $color-4;
+  color: $color-default;
+}
+
+.section-header {
+  text-align: center;
+  padding-bottom: 70px;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    color: #2e3135;
+
+    &:before,
+    &:after {
+      content: "";
+      width: 50px;
+      height: 2px;
+      background: $color-primary;
+      display: inline-block;
+    }
+
+    &:before {
+      margin: 0 15px 10px 0;
+    }
+
+    &:after {
+      margin: 0 0 10px 15px;
+    }
+  }
+
+  p {
+    margin: 0 auto 0 auto;
+
+    @media (min-width: 1199px) {
+      max-width: 60%;
+    }
+  }
+}
+
+.carousel-item {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 1;
+  transition-duration: 0.4s;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  overflow-x: hidden;
+  padding: 0;
+  height: 100vh;
+}
+
+.carousel {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 0;
+  margin: 0;
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero .info {
+    padding: 0 50px;
+  }
+}
+
+.info h2 {
+  color: #fff;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  font-size: 56px;
+  font-weight: 700;
+  position: relative;
+}
+
+.info h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--color-primary);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .info h2 {
+    font-size: 36px;
+  }
+}

@@ -1,1 +1,266 @@
-<app-breadcrumb></app-breadcrumb>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero">
+  <div class="info d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+          <h2 data-aos="fade-down">Tell us your moment.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="carousel-item"
+    [@fadeInOnEnter]
+    [@fadeOutOnLeave]
+    style="background-image: url(assets/images/carousel1.jpg)"
+  ></div>
+</section>
+<!-- End Hero Section -->
+
+<section id="about">
+  <div class="row container">
+    <div
+      class="col-lg-6 justify-content-center box align-middle"
+      style="margin: auto"
+    >
+      <h1>Here's how:</h1>
+      <br />
+      <br />
+      <h4>
+        We can’t wait to hear about your plans, get to know you and hear your
+        stories.
+        <br />
+        <br />
+        We’ll respond to your email with our detailed pricing brochure for you
+        to have a look over.
+        <br />
+        <br />
+        We always respond to every inquiry so please check your junk for our
+        response if you’ve not heard back from us. Currently Only Accepting
+        Bookings for 2023 & 2024 - we have limited availability in 2023.
+        <br />
+        <br />
+        Have you checked out our FAQ’s?
+      </h4>
+    </div>
+    <div class="col-lg-6 text-center box">
+      <img src="assets/images/JL.jpg" class="rounded img-fluid" />
+    </div>
+  </div>
+</section>
+
+<!-- ======= Form Section ======= -->
+<section id="form" class="form">
+  <div class="container">
+    <div>
+      <div>
+        <form
+          [formGroup]="userForm"
+          (ngSubmit)="onSubmit(userForm)"
+          class="mx-1 mx-md-4"
+        >
+          <label for="name">Your Name (Required)</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.name.valid &&
+                  userForm.controls.name.touched
+                "
+                placeholder="John Loong"
+                type="text"
+                class="form-control"
+                formControlName="name"
+              />
+            </div>
+          </div>
+
+          <label for="partnerName">Your partners name</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                placeholder="Zoe"
+                type="text"
+                class="form-control"
+                formControlName="partnerName"
+              />
+            </div>
+          </div>
+
+          <label for="email">Email (Required)</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.email.valid &&
+                  userForm.controls.email.touched
+                "
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="info@jlstudio.com"
+              />
+            </div>
+          </div>
+
+          <label for="phone">Phone no (Required) </label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.phone.valid &&
+                  userForm.controls.phone.touched
+                "
+                type="phone"
+                class="form-control"
+                formControlName="phone"
+                placeholder="+6015478934"
+              />
+            </div>
+          </div>
+
+          <label for="date">Event Date (Required) </label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.date.valid &&
+                  userForm.controls.date.touched
+                "
+                type="date"
+                class="form-control"
+                formControlName="date"
+                placeholder="+6015478934"
+              />
+            </div>
+          </div>
+
+          <label for="location">Event Location (Required)</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.location.valid &&
+                  userForm.controls.location.touched
+                "
+                type="text"
+                class="form-control"
+                formControlName="location"
+                placeholder="Ipoh/KL/JB/Singapore/Sabah/Sarawak"
+              />
+            </div>
+          </div>
+
+          <label for="tell">Tell Us More</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <textarea 
+                type="text"
+                id="tell"
+                class="form-control"
+                formControlName="tell"
+                placeholder="About yourself"
+              >
+              </textarea>
+            </div>
+          </div>
+
+          <label for="ig">Instagram</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                type="text"
+                id="ig"
+                class="form-control"
+                formControlName="ig"
+                placeholder="+6015478934"
+              />
+            </div>
+          </div>
+
+          <label for="source">How did you hear about us</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                type="text"
+                id="source"
+                class="form-control"
+                formControlName="source"
+                placeholder="friend/website/instagram/facebook/xiaohongshu"
+              />
+            </div>
+          </div>
+
+          <label for="preferred">Your preferred way to contact you</label>
+          <div class="mb-4 input-group">
+            <div class="form-outline flex-fill mb-0">
+              <input
+                [class.is-invalid]="
+                  !userForm.controls.preferred.valid &&
+                  userForm.controls.preferred.touched
+                "
+                type="text"
+                id="preferred"
+                class="form-control"
+                formControlName="preferred"
+                placeholder="whatsapp/phone/email"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div
+              class="d-flex flex-row text-danger"
+              *ngIf="
+                userForm.controls.name.errors?.required &&
+                userForm.controls.name.touched
+              "
+            >
+              Name is required.
+            </div>
+            <div
+              class="d-flex flex-row text-danger"
+              *ngIf="
+                userForm.controls.email.errors?.required &&
+                userForm.controls.email.touched
+              "
+            >
+              Email is required.
+            </div>
+            <div
+              class="d-flex flex-row text-danger"
+              *ngIf="
+                userForm.controls.email.errors?.pattern &&
+                userForm.controls.email.touched
+              "
+            >
+              Kindly enter proper email address.
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            <button
+              type="submit"
+              [disabled]="userForm.invalid || loading"
+              class="btn btn-primary btn-lg"
+            >
+              <span *ngIf="loading">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Loading...</span>
+              </span>
+
+              <span *ngIf="!loading"> Send </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End For Section -->

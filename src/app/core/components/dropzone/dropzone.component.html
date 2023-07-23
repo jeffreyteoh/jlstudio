@@ -1,0 +1,3 @@
+<ngx-file-drop dropZoneLabel="Drag and drop the album here" class="file-drop" (onFileDrop)="handleFileDrop($event)" (click)="this.openDialog()">
+</ngx-file-drop>
+<input type="file" #fileInput style="display: none;" (change)="handleFileSelect($event)">

@@ -1,53 +1,218 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
+<main>
+  <app-breadcrumb></app-breadcrumb>
+  <section class="vh-100" style="background-color: #eee">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                    Sign up
+                  </p>
+
+                  <form
+                    [formGroup]="userForm"
+                    (ngSubmit)="onSubmit(userForm)"
+                    class="mx-1 mx-md-4"
+                  >
+                    <div class="mb-4 input-group">
+                      <i class="bi bi-person-fill mx-md-2 col-form-label"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input
+                          [class.is-invalid]="!userForm.controls.name.valid  && userForm.controls.name.touched"
+                          placeholder="Your Name"
+                          type="text"
+                          class="form-control"
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="mb-4 input-group">
+                      <i class="bi bi-envelope-fill mx-md-2 col-form-label"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input
+                          [class.is-invalid]="!userForm.controls.email.valid && userForm.controls.email.touched"
+                          type="email"
+                          id="email"
+                          class="form-control"
+                          formControlName="email"
+                          placeholder="Your Email"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="mb-4 input-group">
+                      <i class="bi bi-lock-fill mx-md-2 col-form-label"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input
+                          [class.is-invalid]="
+                            !userForm.controls.password.valid && userForm.controls.password.touched
+                          "
+                          [type]="pass"
+                          class="form-control"
+                          placeholder="Password"
+                          formControlName="password"
+                          aria-label="Password"
+                          aria-describedby="password-addon"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="input-group-text"
+                        id="password-addon"
+                        (click)="togglePassword()"
+                      >
+                        <i
+                          class="bi bi-eye-fill"
+                          *ngIf="!showPass"
+                        ></i>
+                        <i
+                          class="bi bi-eye-slash-fill"
+                          *ngIf="showPass"
+                        ></i>
+                      </button>
+                    </div>
+
+                    <div class="mb-4 input-group">
+                      <i class="bi bi-key-fill mx-md-2 col-form-label"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <input
+                          [class.is-invalid]="
+                            !userForm.controls.password2.valid && userForm.controls.password2.touched
+                          "
+                          [type]="pass2"
+                          class="form-control"
+                          placeholder="Repeat your password"
+                          aria-label="Password2"
+                          aria-describedby="password2-addon"
+                          formControlName="password2"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="input-group-text"
+                        id="password2-addon"
+                        (click)="togglePassword2()"
+                      >
+                        <i
+                          class="bi bi-eye-fill"
+                          aria-hidden="true"
+                          *ngIf="!showPass2"
+                        ></i>
+                        <i
+                          class="bi bi-eye-slash-fill"
+                          aria-hidden="true"
+                          *ngIf="showPass2"
+                        ></i>
+                      </button>
+                    </div>
+
+                    <div
+                      class="form-check d-flex justify-content-center mb-5 input-group"
+                    >
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        name="agree"
+                        formControlName="agree"
+                        [class.is-invalid]="
+                        !userForm.controls.agree.valid
+                      "
+                      />
+                      <label class="form-check-label" for="agree"
+                        >I agree all statements in
+                        <a href="#!">Terms of service</a></label
+                      >
+                    </div>
+
+                    <div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.name.errors?.required && userForm.controls.name.touched"
+                      >
+                        Name is required.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.email.errors?.required && userForm.controls.email.touched"
+                      >
+                        Email is required.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.email.errors?.pattern && userForm.controls.email.touched"
+                      >
+                        Kindly enter proper email address.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.password.errors?.pattern && userForm.controls.password.touched"
+                      >
+                        Requires at least 8 characters with at least one
+                        uppercase, one lowercase, one number, and one special
+                        character.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.password.errors?.required && userForm.controls.password.touched"
+                      >
+                        Password is required.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="
+                          (userForm.controls.password2.errors?.required ||
+                          userForm.controls.password2.errors?.notEqual) &&
+                          userForm.controls.password2.touched
+                        "
+                      >
+                        Password does not match.
+                      </div>
+                      <div
+                        class="d-flex flex-row text-danger"
+                        *ngIf="userForm.controls.agree.errors?.required"
+                      >
+                        Kindly agree to the Terms of service.
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                    >
+                      <button
+                        type="submit"
+                        [disabled]="userForm.invalid || loading"
+                        class="btn btn-primary btn-lg"
+                      >
+                        <span *ngIf="loading">
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          <span class="sr-only">Loading...</span>
+                        </span>
+
+                        <span *ngIf="!loading">
+                          Register
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+                >
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                    class="img-fluid"
+                    alt="Sample image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="formGroup">
-          <input
-            type="password"
-            class="formControl"
-            placeholder="Password"
-            #userPwd
-            required
-          />
-        </div>
-        <div class="formGroup">
-          <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
-          />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-        <!-- Continue with Google -->
-        <div class="formGroup">
-          <button
-            type="button"
-            class="btn googleBtn"
-            (click)="authService.GoogleAuth()"
-          >
-            <i class="fab fa-google-plus-g"></i>
-            Continue with Google
-          </button>
-        </div>
-      </div>
-      <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <span class="redirect" routerLink="/signin">Log In</span></span
-        >
       </div>
     </div>
-  </div>
+  </section>
+</main>

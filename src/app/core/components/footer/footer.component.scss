@@ -1,0 +1,8 @@
+@import "variables";
+
+footer{
+    display: block;
+    background-color: $color-4;
+    color: $color-default;
+    user-select: none;
+}

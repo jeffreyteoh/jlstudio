@@ -1,48 +1,111 @@
 <main>
   <app-breadcrumb></app-breadcrumb>
 
-  <section>
-    <div class="container">
-      <h3>Sign In</h3>
-      <form>
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" #email required />
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid"
+            alt="Sample image"
+          />
         </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form [formGroup]="signinForm" (ngSubmit)="onSubmit(signinForm)">
+            <div
+              class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+            >
+              <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="bi bi-facebook"></i>
+              </button>
 
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" #password required />
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="bi bi-google"></i>
+              </button>
+            </div>
+
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Or</p>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="email">Email address</label>
+              <input
+                [class.is-invalid]="
+                  !signinForm.controls.email.valid &&
+                  signinForm.controls.email.touched
+                "
+                type="email"
+                id="emmail"
+                class="form-control form-control-lg"
+                formControlName="email"
+                placeholder="Enter a valid email address"
+              />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label class="form-label" for="password">Password</label>
+
+              <input
+                [class.is-invalid]="
+                  !signinForm.controls.password.valid &&
+                  signinForm.controls.password.touched
+                "
+                type="password"
+                id="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                placeholder="Enter password"
+              />
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-0">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  formControlName="password"
+                  id="remember"
+                />
+                <label class="form-check-label" for="remember">
+                  Remember me
+                </label>
+              </div>
+              <a routerLink="/forgot" class="text-body">Forgot password?</a>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem"
+                [disabled]="!signinForm.valid || loading"
+              >
+                <span *ngIf="loading">
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Loading...</span>
+                </span>
+
+                <span *ngIf="!loading"> Login </span>
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">
+                Don't have an account?
+                <a routerLink="/signup" class="link-danger">Register</a>
+              </p>
+            </div>
+          </form>
         </div>
-
-        <div class="form-group">
-          <input type="button" class="btn btn-primary" value="Log in"
-            (click)="authService.SignIn(email.value, password.value)" />
-        </div>
-
-        <div class="form-group">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
-      </form>
-
-      <button type="button" class="btn btn-google btn-block  btn-outline" (click)="authService.GoogleAuth()">
-        <img src="https://img.icons8.com/color/16/000000/google-logo.png">
-        Sign in with Google
-      </button>
-
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
       </div>
-
-      <div class="redirectToLogin">
-        <span>Don't have an account?<span class="redirect" routerLink="/register">
-            Sign Up</span></span>
-      </div>
-    </div>
-    <div class="my-3">
-      <div class="loading">Loading</div>
-      <div class="error-message"></div>
-      <div class="sent-message">Your message has been sent. Thank you!</div>
     </div>
   </section>
 </main>
-
-<script src="https://accounts.google.com/gsi/client" async defer></script>
