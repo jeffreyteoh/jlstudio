@@ -20,6 +20,10 @@
         ]
       }
     ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
     "appAssociation": "AUTO",
     "cleanUrls": true,
     "trailingSlash": false

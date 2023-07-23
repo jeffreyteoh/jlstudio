@@ -46,12 +46,9 @@ export class GalleryComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.albums.push(await this.storageService.listFolders(20, null));
     this.loadFolders();
 
     this.isLoggedIn = true;
-
-    // console.log(this.isLoggedIn);
 
     this.getCategories();
 
