@@ -60,12 +60,8 @@ export class GalleryComponent implements OnInit {
   getCategories() {
 
     this.afs.getCategories().subscribe(res => {
-      console.log(res);
       this.categories = this.categories.concat(res);
     })
-
-
-    return [];
   }
 
 }

@@ -1,26 +1,49 @@
-<header class="header d-flex align-items-center" [ngClass]="showMobileNav? 'mobile-nav-active' : ''" >
-    <div
-      class="container-fluid container-xl d-flex align-items-center justify-content-between"
-    >
-      <a routerLink="/" class="logo d-flex align-items-center">
-        <h1>JL Studio</h1>
-      </a>
-  
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list" [ngClass]="showMobileNav? 'd-none': ''" (click)="toggleNav()"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide  bi bi-x" [ngClass]="showMobileNav? '': 'd-none'" (click)="toggleNav()"></i>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li class="nav-item"><a routerLink="/" aria-current="page" class="nav-link">Home</a></li>
-          <li class="dropdown nav-item">
-            <a routerLink="/gallery" class="nav-link" [ngClass]="showMobileNav? '' : 'dropdown-toggle'">Gallery</a>
-            <ul class="dropdown" [ngClass]="showMobileNav? 'dropdown-active' : ''">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a routerLink="/contact"  class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header
+  class="header d-flex align-items-center"
+  [ngClass]="showMobileNav ? 'mobile-nav-active' : ''"
+>
+  <div
+    class="container-fluid container-xl d-flex align-items-center justify-content-between"
+  >
+    <a routerLink="/" class="logo d-flex align-items-center">
+      <h1>JL Studio</h1>
+    </a>
+
+    <i
+      class="mobile-nav-toggle mobile-nav-show bi bi-list"
+      [ngClass]="showMobileNav ? 'd-none' : ''"
+      (click)="toggleNav()"
+    ></i>
+    <i
+      class="mobile-nav-toggle mobile-nav-hide bi bi-x"
+      [ngClass]="showMobileNav ? '' : 'd-none'"
+      (click)="toggleNav()"
+    ></i>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li class="nav-item">
+          <a routerLink="/" aria-current="page" class="nav-link">Home</a>
+        </li>
+        <li class="dropdown nav-item">
+          <a
+            routerLink="/gallery"
+            class="nav-link"
+            [ngClass]="showMobileNav ? '' : 'dropdown-toggle'"
+            >Gallery</a
+          >
+          <ul
+            class="dropdown"
+            [ngClass]="showMobileNav ? 'dropdown-active' : ''"
+          >
+            <li *ngFor="let cat of categories">
+              <a href="/album/{{ cat.name }}">{{cat.name}}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

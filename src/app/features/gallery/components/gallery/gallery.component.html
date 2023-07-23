@@ -17,13 +17,8 @@
 </section>
 <!-- End Hero Section -->
 <section id="gallery">
-  <ul
-    class="nav justify-content-center"
-    [@fadeInOnEnter]
-    [@fadeOutOnLeave]
-    *ngFor="let category of categories"
-  >
-    <li class="nav-item">
+  <ul class="nav justify-content-center" [@fadeInOnEnter] [@fadeOutOnLeave]>
+    <li class="nav-item" *ngFor="let category of categories">
       <a
         role="tab"
         class="nav-link active"
@@ -37,28 +32,43 @@
 
   <div class="container-fluid">
     <div class="row justify-content-center card-columns">
-      <div class="card" [@fadeInOnEnter] *ngIf="isLoggedIn" style="align-self: center;">
-        <div class="card-body" >
-            <app-dropzone></app-dropzone>
+      <div
+        class="card"
+        [@fadeInOnEnter]
+        *ngIf="isLoggedIn"
+        style="align-self: center"
+      >
+        <div class="card-body">
+          <app-dropzone></app-dropzone>
         </div>
       </div>
-      
+
       <!-- <span *ngFor="let album of albums"> -->
-        <div class="card" [@fadeInOnEnter] [@fadeOutOnLeave] *ngFor="let album of albums">
-          <a routerLink="/album/{{album}}">
-            <img class="card-img-top" [defaultImage]="defaulImage" [lazyLoad]="image" [attr.alt]="album" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title text-center">{{ album }}</h5>
-            <div *ngIf="isLoggedIn" class="button-container">
-                <div>
-                  <span> categories: </span>
-                  <span contenteditable="true"> 123456 </span>
-                </div>
+      <div
+        class="card"
+        [@fadeInOnEnter]
+        [@fadeOutOnLeave]
+        *ngFor="let album of albums"
+      >
+        <a routerLink="/album/{{ album }}">
+          <img
+            class="card-img-top"
+            [defaultImage]="defaulImage"
+            [lazyLoad]="image"
+            [attr.alt]="album"
+          />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ album }}</h5>
+          <div *ngIf="isLoggedIn" class="button-container">
+            <div>
+              <span> categories: </span>
+              <span contenteditable="true"> 123456 </span>
             </div>
           </div>
         </div>
-<!--   
+      </div>
+      <!--   
         <div class="card" style="width: 18rem" [@fadeInOnEnter] [@fadeOutOnLeave]>
           <a routerLink="/album/{{album}}">
             <img class="card-img-top" [defaultImage]="defaulImage" [lazyLoad]="image" [attr.alt]="album" />
@@ -75,8 +85,5 @@
         </div> -->
       <!-- </span> -->
     </div>
-
   </div>
-
-
 </section>
