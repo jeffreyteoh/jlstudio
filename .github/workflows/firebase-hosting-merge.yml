@@ -29,4 +29,10 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JLSTUDIO_27AA5 }}'
           channelId: live
           projectId: jlstudio-27aa5
-      
+
+      - name: Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: dist/jlstudio
+            

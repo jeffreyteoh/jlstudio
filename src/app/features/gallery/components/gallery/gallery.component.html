@@ -43,47 +43,30 @@
         </div>
       </div>
 
-      <!-- <span *ngFor="let album of albums"> -->
       <div
         class="card"
         [@fadeInOnEnter]
         [@fadeOutOnLeave]
         *ngFor="let album of albums"
       >
-        <a routerLink="/album/{{ album }}">
+        <a routerLink="/album/{{ album.name }}">
           <img
             class="card-img-top"
             [defaultImage]="defaulImage"
-            [lazyLoad]="image"
-            [attr.alt]="album"
+            [lazyLoad]="album.thumbnailUrl"
+            [attr.alt]="album.name"
           />
         </a>
         <div class="card-body">
-          <h5 class="card-title text-center">{{ album }}</h5>
+          <h5 class="card-title text-center">{{ album.name }}</h5>
           <div *ngIf="isLoggedIn" class="button-container">
-            <div>
-              <span> categories: </span>
-              <span contenteditable="true"> 123456 </span>
+            <div class="row">
+              <span class="col-md-4"> categories: </span>
+              <span contenteditable="true" class="category col" (blur)="updateCategory(album.id, $event, album.category)"> {{ album.category?.toString() }} </span>
             </div>
           </div>
         </div>
       </div>
-      <!--   
-        <div class="card" style="width: 18rem" [@fadeInOnEnter] [@fadeOutOnLeave]>
-          <a routerLink="/album/{{album}}">
-            <img class="card-img-top" [defaultImage]="defaulImage" [lazyLoad]="image" [attr.alt]="album" />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title text-center">{{ album }}</h5>
-            <div *ngIf="isLoggedIn" class="button-container">
-                <div>
-                  <span> categories: </span>
-                  <span contenteditable="true"> 123456 </span>
-                </div>
-            </div>
-          </div>
-        </div> -->
-      <!-- </span> -->
     </div>
   </div>
 </section>

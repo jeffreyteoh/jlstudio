@@ -87,8 +87,4 @@ export class AlbumComponent implements OnInit {
     console.log(index, prevIndex);
   };
 
-  // renameFolder(folder: string): void {
-
-  // }
-  moveFolder(folder: string): void {}
 }

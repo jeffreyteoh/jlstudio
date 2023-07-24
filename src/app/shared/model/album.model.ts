@@ -1,8 +1,7 @@
-export interface album {
-    albumId: string;
+export interface Album {
+    id?: string;
     name: string;
-    userId: string;
-    title: string;
-    url: string;
     thumbnailUrl: string;
+    category?: string[];
+    uploadedAt?: Date;
 }

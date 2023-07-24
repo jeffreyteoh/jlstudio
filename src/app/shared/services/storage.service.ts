@@ -82,27 +82,21 @@ export class StorageService {
     }
   }
 
-  public uploadFile(file: any, path: string) {
+  public async uploadFile(file: any, path: string) {
     const ref = this.angularFireStorage.ref(path);
     const task = ref.put(file);
     const folder = path.split('/')[1];
-
+  
     this.folders.push(folder);
+  
+    try {
+      await firstValueFrom(task.snapshotChanges()) as any;
 
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          ref.getDownloadURL().subscribe((downloadURL: string) => {
-            console.log('File available at:', downloadURL);
-          });
-        })
-      )
-      .subscribe((snapshot: any) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`Upload progress: ${progress}%`);
-      });
+    } catch (error) {
+      console.log('Upload failed:', error);
+    }
+
+    return ref.getDownloadURL();
   }
 
   public async listAllFolders(): Promise<string[]> {
@@ -128,9 +122,7 @@ export class StorageService {
       maxResults: pageSize,
       pageToken: pageToken
     };
-  
-    console.log(pageName);
-  
+    
     const result: ListResult | undefined = await firstValueFrom(
       this.angularFireStorage.ref(pageName).list(options).pipe(
         map((r: ListResult) => ({
