@@ -60,6 +60,7 @@
           [formGroup]="userForm"
           (ngSubmit)="onSubmit(userForm)"
           class="mx-1 mx-md-4"
+          [class.hidden]="submmited"
         >
           <label for="name">Your Name (Required)</label>
           <div class="mb-4 input-group">
@@ -259,6 +260,11 @@
             </button>
           </div>
         </form>
+      </div>
+      <div [class.hidden]="!submmited">
+        <div class="text-center">
+          We have received your request! Pleast be patient and we will reply you soon!
+        </div>
       </div>
     </div>
   </div>

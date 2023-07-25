@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {CookieService} from 'ngx-cookie-service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +23,6 @@ import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { LightgalleryModule } from 'lightgallery/angular';
-
 
 import { ContactComponent } from './features/contact/component/contact/contact.component';
 import { SignInComponent } from './features/auth/component/sign-in/sign-in.component';
@@ -71,14 +69,14 @@ import { FirestoreService } from './shared/services/firestore.service';
     ToastComponent,
     AlbumComponent,
     DropzoneComponent,
-    DialogComponent
+    DialogComponent,
   ],
   providers: [
     AuthService,
     ToastService,
     StorageService,
     FirestoreService,
-    CookieService,  
+    CookieService,
     { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks },
   ],
   imports: [

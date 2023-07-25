@@ -73,6 +73,11 @@ const routes: Routes = [
     }}
   },
   {
+    path: 'album',
+    redirectTo: '/gallery',
+    pathMatch: 'full',
+  },
+  {
     path: 'album/:name',
     component: AlbumComponent
   },

@@ -8,6 +8,8 @@ import {
   fadeInOnEnterAnimation,
   fadeOutOnLeaveAnimation,
 } from 'angular-animations';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -17,13 +19,14 @@ import {
 })
 export class ContactComponent {
   userForm!: FormGroup;
-  showPass = false;
-  showPass2 = false;
+  showPass:boolean = false;
+  showPass2: boolean = false;
+  submmited: boolean = false;
 
-  pass = 'password';
-  pass2 = 'password';
+  pass: string = 'password';
+  pass2 : string = 'password';
 
-  loading = false;
+  loading: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -44,7 +47,7 @@ export class ContactComponent {
         date: ['', [Validators.required]],
         phone: ['', [Validators.required]],
         preferred: ['', [Validators.required]],
-        ig: ['']
+        ig: [''],
       },
       {
         validators: equivalentValidator('password', 'password2'),
@@ -53,14 +56,24 @@ export class ContactComponent {
   }
 
   async onSubmit(form: any) {
+    if (this.submmited) {
+      return;
+    }
+
     form.disable();
     this.loading = true;
+
     try {
-      await this.authService.SignUp(
-        form.value.email,
-        form.value.password,
-        form.value.name
+      const result: EmailJSResponseStatus = await emailjs.send(
+        environment.emailjs.serviceId,
+        environment.emailjs.template.contact,
+        form.value,
+        environment.emailjs.publicKey
       );
+
+      this.toastService.show(result.text, {type: 'success'});	
+      console.log(form);
+      this.submmited = true;
     } catch (error) {
       console.log(error);
     }

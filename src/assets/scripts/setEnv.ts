@@ -53,6 +53,13 @@ const environmentFileContent = `
       messagingSenderId: '${process.env.FIREBASE_MESSAGINGSENDERID}',
       appId: '${process.env.FIREBASE_APPID}',
       measurementId: '${process.env.FIREBASE_MEASUREMENTID}'
+    },
+    emailjs: {
+      publicKey: '${process.env.EMAILJS_PUBLICKEY}',
+      serviceId: '${process.env.EMAILJS_SERVICEID}',
+      template: {
+        contact: '${process.env.EMAILJS_TEMPLATE_CONTACT}'
+      }
     }
     
   };
