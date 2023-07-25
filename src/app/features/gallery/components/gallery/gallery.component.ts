@@ -8,6 +8,8 @@ import {
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
 import { Category } from '../../../../shared/model/category.model';
 import { Album } from '../../../../shared/model/album.model';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-gallery',
@@ -16,6 +18,7 @@ import { Album } from '../../../../shared/model/album.model';
   animations: [fadeInOnEnterAnimation(), fadeOutOnLeaveAnimation()],
 })
 export class GalleryComponent implements OnInit {
+  [x: string]: any;
   categories: Category[] = [{ id: 'all', name: 'All' }];
   currentCategory: string = 'All';
   albums: Album[] = [];
@@ -30,8 +33,11 @@ export class GalleryComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private afs: FirestoreService
-  ) {}
+    private afs: FirestoreService,
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller
+
+    ) {}
 
   /**
    * Loads folders asynchronously.
@@ -50,7 +56,8 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  async filter(cat: string): Promise<void> {
+  async filter(cat: string, $event: Event) {
+    $event.stopPropagation();
     this.currentCategory = cat;
   }
 
@@ -67,6 +74,23 @@ export class GalleryComponent implements OnInit {
     this.isLoggedIn = true;
 
     this.getCategories();
+
+    this.route.queryParams.subscribe((params) => {
+      if (params.cat) {
+        this.currentCategory = params.cat;
+        this.viewportScroller.scrollToAnchor('gallery');
+      }
+    });
+  }
+
+  toSection(section: string): void {
+    const elem = document.getElementById(section);
+    const topPos = elem?.offsetTop;
+    if (topPos !== undefined) {
+      document.body?.scrollTo({ top: topPos - 10, behavior: 'smooth' });
+
+        console.log();
+    }
   }
 
   /**
@@ -88,7 +112,11 @@ export class GalleryComponent implements OnInit {
    * @param {Event} $event - The event object associated with the update.
    * @return {void} This function does not return a value.
    */
-  async updateCategory(id: string | undefined, $event: Event, curCats: any) {
+  async updateCategory(
+    id: string | undefined,
+    $event: Event,
+    curCats: any = []
+  ) {
     if (!id) {
       return;
     }
@@ -175,7 +203,25 @@ export class GalleryComponent implements OnInit {
     return this.categories.find((category) => category.name === name);
   }
 
+  /**
+   * Finds a category by its ID.
+   *
+   * @param {string} id - The ID of the category.
+   * @return {Category | undefined} The category with the specified ID, or undefined if not found.
+   */
   getCategoryById(id: string) {
     return this.categories.find((category) => category.id === id);
+  }
+
+  /**
+   * Check if the current category is included in the given array of categories.
+   *
+   * @param {string[]} cats - The array of categories to check.
+   * @return {boolean} - True if the current category is included in the array; false otherwise.
+   */
+  checkCategory(cats: string[] = []) {
+    return (
+      cats.includes(this.currentCategory) || this.currentCategory === 'All'
+    );
   }
 }

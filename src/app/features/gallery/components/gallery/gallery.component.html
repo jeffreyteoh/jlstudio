@@ -17,18 +17,20 @@
 </section>
 <!-- End Hero Section -->
 <section id="gallery">
-  <ul class="nav justify-content-center" [@fadeInOnEnter] [@fadeOutOnLeave]>
-    <li class="nav-item" *ngFor="let category of categories">
-      <a
-        role="tab"
-        class="nav-link active"
-        [attr.aria-controls]="category.name"
-        [attr.aria-selected]="category.name === this.currentCategory"
-        (onClick)="filter(category.name)"
-        >{{ category.name }}</a
-      >
-    </li>
-  </ul>
+  <nav class="navbar category">
+    <ul class="justify-content-center" [@fadeInOnEnter] [@fadeOutOnLeave]>
+      <li *ngFor="let category of categories" (click)="filter(category.name, $event)">
+        <a
+          [attr.aria-controls]="category.name"
+          [attr.aria-selected]="category.name === this.currentCategory"
+          [ngClass]="category.name === this.currentCategory ? 'active' : ''"
+        >
+          {{ category.name }}
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
 
   <div class="container-fluid">
     <div class="row justify-content-center card-columns">
@@ -48,6 +50,7 @@
         [@fadeInOnEnter]
         [@fadeOutOnLeave]
         *ngFor="let album of albums"
+        [ngClass]="checkCategory(album.category) ? '' : 'hidden'"
       >
         <a routerLink="/album/{{ album.name }}">
           <img
@@ -62,7 +65,13 @@
           <div *ngIf="isLoggedIn" class="button-container">
             <div class="row">
               <span class="col-md-4"> categories: </span>
-              <span contenteditable="true" class="category col" (blur)="updateCategory(album.id, $event, album.category)"> {{ album.category?.toString() }} </span>
+              <span
+                contenteditable="true"
+                class="category col"
+                (blur)="updateCategory(album.id, $event, album.category)"
+              >
+                {{ album.category?.toString() }}
+              </span>
             </div>
           </div>
         </div>

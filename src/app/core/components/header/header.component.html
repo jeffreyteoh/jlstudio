@@ -18,30 +18,41 @@
       class="mobile-nav-toggle mobile-nav-hide bi bi-x"
       [ngClass]="showMobileNav ? '' : 'd-none'"
       (click)="toggleNav()"
-    ></i>
+    ></i> 
     <nav id="navbar" class="navbar">
       <ul>
         <li class="nav-item">
-          <a routerLink="/" aria-current="page" class="nav-link">Home</a>
+          <a
+            routerLink="/"
+            aria-current="page"
+            [ngClass]="activeRoute === '/' ? 'active' : ''"
+            >Home</a
+          >
         </li>
         <li class="dropdown nav-item">
           <a
             routerLink="/gallery"
-            class="nav-link"
+            [class.active]="activeRoute === '/gallery'"
             [ngClass]="showMobileNav ? '' : 'dropdown-toggle'"
             >Gallery</a
           >
           <ul
-            class="dropdown"
             [ngClass]="showMobileNav ? 'dropdown-active' : ''"
           >
             <li *ngFor="let cat of categories">
-              <a href="/album/{{ cat.name }}">{{cat.name}}</a>
+              <a href="/gallery?cat={{ cat.name }}">{{ cat.name }}</a>
+            </li>
+            <li>
+              <a href="/album?=test">test</a>
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a routerLink="/contact" class="nav-link">Contact</a>
+        <li>
+          <a
+            routerLink="/contact"
+            [class.active]="activeRoute === '/contact'"
+            >Contact</a
+          >
         </li>
       </ul>
     </nav>
